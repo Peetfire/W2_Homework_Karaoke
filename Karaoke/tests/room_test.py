@@ -9,9 +9,11 @@ class TestRoom(unittest.TestCase):
         self.song1 = Song("9 to 5", "Dolly Parton", 2.42)
         self.song2 = Song("Me & Bobby McGee", "Janis Joplin", 4.31)
         self.song3 = Song("Just Dropped In", "Kenny Rogers", 3.20)
+        self.playlist = [self.song1, self.song2, self.song3]
         self.guest1 = Guest("Peter Kay")
         self.guest2 = Guest("Tom Jones")
         self.guest3 = Guest("Helena Bonham-Carter")
+        self.group = [self.guest1, self.guest2, self.guest3]
         self.room = Room("Zulu Lounge")
 
     def test_room_has_name(self):
@@ -36,9 +38,7 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_can_add_songs_to_room(self):
-        self.room.add_song(self.song1)
-        self.room.add_song(self.song2)
-        self.room.add_song(self.song3)
+        self.room.add_songs(self.playlist)
         expected = 3
         result = len(self.room.get_songs())
         self.assertEqual(expected, result)
@@ -50,9 +50,22 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_can_add_guests_to_room(self):
-        self.room.add_guest(self.guest1)
-        self.room.add_guest(self.guest2)
-        self.room.add_guest(self.guest3)
+        self.room.add_group(self.group)
         expected = 3
+        result = len(self.room.get_guests())
+        self.assertEqual(expected, result)
+
+    def test_can_remove_guest_from_room(self):
+        self.room.add_guest(self.guest1)
+        self.room.remove_guest(self.guest1)
+        expected = 0
+        result = len(self.room.get_guests())
+        self.assertEqual(expected, result)
+
+    # @unittest.skip("")
+    def test_can_remove_group_of_guests_from_room(self):
+        self.room.add_group(self.group)
+        self.room.remove_group(self.group)
+        expected = 0
         result = len(self.room.get_guests())
         self.assertEqual(expected, result)
