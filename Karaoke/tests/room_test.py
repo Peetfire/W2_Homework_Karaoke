@@ -18,3 +18,13 @@ class TestRoom(unittest.TestCase):
         expected = "Zulu Lounge"
         result = self.room.name
         self.assertEqual(expected, result)
+
+    def test_room_has_song_list(self):
+        expected = 0
+        result = len(self.room.songs)
+        self.assertEqual(expected, result)
+
+    def test_room_has_guest_list(self):
+        expected = 0
+        result = len(self.room.guests)
+        self.assertEqual(expected, result)

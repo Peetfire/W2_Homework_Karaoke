@@ -4,3 +4,6 @@ class Room:
         self.name = name
         self.guests = []
         self.songs = []
+
+    def add_song(self, song):
+        self.guests.append(song)
