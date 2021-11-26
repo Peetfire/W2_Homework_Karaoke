@@ -10,3 +10,8 @@ class TestGuest(unittest.TestCase):
         expected = "Peter Kay"
         result = self.guest.name
         self.assertEqual(expected, result)
+    
+    def test_has_cash(self):
+        expected = 50.00
+        result = self.guest.get_cash()
+        self.assertEqual(expected, result)
