@@ -10,9 +10,9 @@ class TestRoom(unittest.TestCase):
         self.song2 = Song("Me & Bobby McGee", "Janis Joplin", 4.31)
         self.song3 = Song("Just Dropped In", "Kenny Rogers", 3.20)
         self.playlist = [self.song1, self.song2, self.song3]
-        self.guest1 = Guest("Peter Kay")
-        self.guest2 = Guest("Tom Jones")
-        self.guest3 = Guest("Helena Bonham-Carter")
+        self.guest1 = Guest("Peter Kay", 40)
+        self.guest2 = Guest("Tom Jones", 60)
+        self.guest3 = Guest("Helena Bonham-Carter", 1000)
         self.group = [self.guest1, self.guest2, self.guest3]
         self.room = Room("Zulu Lounge")
 
