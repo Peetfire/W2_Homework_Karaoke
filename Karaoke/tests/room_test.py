@@ -13,8 +13,12 @@ class TestRoom(unittest.TestCase):
         self.guest1 = Guest("Peter Kay", 40)
         self.guest2 = Guest("Tom Jones", 60)
         self.guest3 = Guest("Helena Bonham-Carter", 1000)
+        self.guest4 = Guest("Sean Locke", 100)
+        self.guest5 = Guest("John Bonham", 200)
+        self.guest6 = Guest("Frnak Zappa", 400)
         self.group = [self.guest1, self.guest2, self.guest3]
-        self.room = Room("Zulu Lounge")
+        self.big_group = self.group + [self.guest4, self.guest5]
+        self.room = Room("Zulu Lounge", 5)
 
     def test_room_has_name(self):
         expected = "Zulu Lounge"
@@ -49,7 +53,33 @@ class TestRoom(unittest.TestCase):
         result = len(self.room.get_guests())
         self.assertEqual(expected, result)
 
+    # @unittest.skip("")
     def test_can_add_guests_to_room(self):
+        self.room.add_group(self.group)
+        expected = 3
+        result = len(self.room.get_guests())
+        self.assertEqual(expected, result)
+
+    def test_cannot_add_guest_to_room_no_space(self):
+        self.room.add_guest(self.guest1)
+        self.room.add_guest(self.guest2)
+        self.room.add_guest(self.guest3)
+        self.room.add_guest(self.guest4)
+        self.room.add_guest(self.guest5)
+        expected = 5
+        result = len(self.room.get_guests())
+        self.assertEqual(expected, result)
+        self.room.add_guest(self.guest6)
+        expected = 5
+        result = len(self.room.get_guests())
+        self.assertEqual(expected, result)
+    
+    # @unittest.skip("")
+    def test_cannot_add_guests_to_room_no_space(self):
+        self.room.add_group(self.group)
+        expected = 3
+        result = len(self.room.get_guests())
+        self.assertEqual(expected, result)
         self.room.add_group(self.group)
         expected = 3
         result = len(self.room.get_guests())
@@ -69,3 +99,5 @@ class TestRoom(unittest.TestCase):
         expected = 0
         result = len(self.room.get_guests())
         self.assertEqual(expected, result)
+
+    
