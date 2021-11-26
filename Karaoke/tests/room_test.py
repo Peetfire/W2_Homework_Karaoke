@@ -42,3 +42,17 @@ class TestRoom(unittest.TestCase):
         expected = 3
         result = len(self.room.get_songs())
         self.assertEqual(expected, result)
+
+    def test_can_add_guest_to_room(self):
+        self.room.add_guest(self.guest1)
+        expected = 1
+        result = len(self.room.get_guests())
+        self.assertEqual(expected, result)
+
+    def test_can_add_guests_to_room(self):
+        self.room.add_guest(self.guest1)
+        self.room.add_guest(self.guest2)
+        self.room.add_guest(self.guest3)
+        expected = 3
+        result = len(self.room.get_guests())
+        self.assertEqual(expected, result)
