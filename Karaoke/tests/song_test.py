@@ -11,12 +11,12 @@ class TestSong(unittest.TestCase):
         result = self.song.song_name
         self.assertEqual(expected, result)
 
-    def test_song_has_name(self):
+    def test_song_has_artist(self):
         expected = "The Beta Band"
         result = self.song.artist
         self.assertEqual(expected, result)
 
-    def test_song_has_name(self):
+    def test_song_has_length(self):
         expected = 6.06
         result = self.song.song_length
         self.assertEqual(expected, result)
