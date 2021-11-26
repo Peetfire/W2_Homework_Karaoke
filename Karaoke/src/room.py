@@ -10,3 +10,9 @@ class Room:
 
     def get_songs(self):
         return self.songs
+
+    def add_guest(self, guest):
+        self.guests.append(guest)
+
+    def get_guests(self):
+        return self.guests
