@@ -3,11 +3,13 @@ from typing import List
 
 class Room:
 
-    def __init__(self, name, capacity):
+    def __init__(self, name, capacity, entry_fee):
         self.name = name
         self.guests = []
         self.songs = []
         self.capacity = capacity
+        self.entry_fee = entry_fee
+        self.takings = 0
 
     def add_song(self, song):
         self.songs.append(song)
@@ -23,6 +25,9 @@ class Room:
 
     def is_capacity(self, amount):
         return self.get_remaining_cap() >= amount
+
+    def get_price(self):
+        return self.entry_fee
 
     def add_guest(self, guest):
         if self.is_capacity(1):
@@ -42,3 +47,23 @@ class Room:
         for guest in group:
             if guest in self.guests:
                 self.guests.remove(guest) 
+
+    def increase_takings(self, amount):
+        self.takings += amount
+
+    def get_takings(self):
+        return self.takings
+
+    def sell_tickets(self, guests):
+        if type(guests) == list:
+            for guest in guests:
+                if guest.get_cash() >= self.get_price():
+                    guest.reduce_cash(self.get_price())
+                    self.increase_takings(self.get_price())
+                    self.add_guest(guest)
+        else:
+            guest = guests
+            if guest.get_cash() >= self.get_price():
+                guest.reduce_cash(self.get_price())
+                self.increase_takings(self.get_price())
+                self.add_guest(guest)
