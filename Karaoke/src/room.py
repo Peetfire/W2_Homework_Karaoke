@@ -6,4 +6,7 @@ class Room:
         self.songs = []
 
     def add_song(self, song):
-        self.guests.append(song)
+        self.songs.append(song)
+
+    def get_songs(self):
+        return self.songs
