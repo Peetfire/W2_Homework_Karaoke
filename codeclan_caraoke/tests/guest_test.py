@@ -32,8 +32,8 @@ class TestGuest(unittest.TestCase):
         result2 = self.guest.get_cash()
         self.assertEqual(expected, result2)
 
-    def test_can_get_fave_song(self):
-        result_guest = self.guest.is_fave_song(self.song)
+    def test_can_shout_out(self):
+        result_guest = self.guest.get_shout_out()
         expected_guest = "Ya, dancer!"
         self.assertEqual(expected_guest ,result_guest)
         

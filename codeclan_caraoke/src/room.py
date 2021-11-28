@@ -70,5 +70,5 @@ class Room:
 
     def play_song(self,song, guest):
         print(f"Now playing: {song.song_name} by {song.artist} for {guest.name.split()[0]}")
-
+        
         return f"Now playing: {song.song_name} by {song.artist} for {guest.name.split()[0]}"

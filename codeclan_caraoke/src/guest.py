@@ -4,6 +4,7 @@ class Guest:
         self.name = name
         self.cash = cash
         self.fave_song = fave_song
+        self.shout_out = "Ya, dancer!"
 
     def get_cash(self):
         return self.cash
@@ -21,7 +22,6 @@ class Guest:
     def get_fave_song(self):
         return self.fave_song
 
-    def is_fave_song(self, song):
-        if self.get_fave_song() == song.song_name:
-            return "Ya, dancer!" 
+    def get_shout_out(self):
+       return self.shout_out
 
