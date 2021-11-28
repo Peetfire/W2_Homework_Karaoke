@@ -68,7 +68,17 @@ class Room:
                 self.increase_takings(self.get_price())
                 self.add_guest(guest)
 
-    def play_song(self,song, guest):
-        print(f"Now playing: {song.song_name} by {song.artist} for {guest.name.split()[0]}")
+    def play_song(self, song, selector):
+        # Displays song details currently playing
+        print(f"\nNow playing: {song.song_name} by {song.artist} for {selector.name.split()[0]}")
         
-        return f"Now playing: {song.song_name} by {song.artist} for {guest.name.split()[0]}"
+        # Check all guests to see if their favourite song is playing and IF it is
+        # displays their shout out.
+        for guest in self.guests:
+            if self.is_fave_song(song, guest):
+                print(f"{guest.name.split()[0]} shouts out: {guest.get_shout_out()}")
+
+        return f"Now playing: {song.song_name} by {song.artist} for {selector.name.split()[0]}"
+
+    def is_fave_song(self, song, guest):
+        return song.song_name == guest.get_fave_song()

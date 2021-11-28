@@ -11,10 +11,10 @@ class TestRoom(unittest.TestCase):
         self.song3 = Song("Just Dropped In", "Kenny Rogers", 3.20)
         self.playlist = [self.song1, self.song2, self.song3]
         self.guest1 = Guest("Peter Kay", 50, "")
-        self.guest2 = Guest("Tom Jones", 60, "")
+        self.guest2 = Guest("Tom Jones", 60, "Just Dropped In")
         self.guest3 = Guest("Helena Bonham-Carter", 1000, "9 to 5")
         self.guest4 = Guest("Sean Locke", 100, "Me & Bobby McGee")
-        self.guest5 = Guest("John Bonham", 200, "")
+        self.guest5 = Guest("John Bonham", 200, "Just Dropped In")
         self.guest6 = Guest("Frank Zappa", 40, "Just Dropped In")
         self.group = [self.guest1, self.guest2, self.guest3]
         self.big_group = self.group + [self.guest4, self.guest5]
@@ -172,9 +172,20 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(expected2, result2)
         self.assertEqual(expected3, result3)
 
+    def test_can_check_for_fave_song_True(self):
+        result = self.room.is_fave_song(self.song3, self.guest6)
+        expected = True
+        self.assertEqual(expected ,result)
+
+    def test_can_check_for_fave_song_False(self):
+        result = self.room.is_fave_song(self.song3, self.guest1)
+        expected = False
+        self.assertEqual(expected ,result)
+
     def test_room_can_play_song(self):
-        result = self.room.play_song(self.song3, self.guest6)
-        expected = "Now playing: Just Dropped In by Kenny Rogers for Frank"
+        self.room.add_group(self.big_group)
+        result = self.room.play_song(self.song3, self.guest5)
+        expected = "Now playing: Just Dropped In by Kenny Rogers for John"
         self.assertEqual(expected ,result)
 
 
