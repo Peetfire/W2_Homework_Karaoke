@@ -1,6 +1,6 @@
 class Refreshment:
 
-    def __init__(self, name, price, stock):
+    def __init__(self, name, price, quantity):
         self.name = name
         self.price = price
-        self.stock = stock
+        self.quantity = quantity

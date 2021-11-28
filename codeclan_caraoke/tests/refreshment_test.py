@@ -17,5 +17,5 @@ class TestRefreshment(unittest.TestCase):
 
     def test_has_stock(self):
         expected = 20
-        result = self.item.stock
+        result = self.item.quantity
         self.assertEqual(expected, result)
