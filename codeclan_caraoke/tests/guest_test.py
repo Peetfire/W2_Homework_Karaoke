@@ -1,10 +1,12 @@
 import unittest
 from src.guest import Guest
+from src.song import Song
 
 class TestGuest(unittest.TestCase):
 
     def setUp(self):
-        self.guest = Guest("Peter Kay", 50.00)
+        self.guest = Guest("Peter Kay", 50.00, "Madness")
+        self.song = Song("Madness", "Prince Buster", 2.34)
 
     def test_has_name(self):
         expected = "Peter Kay"
@@ -29,4 +31,9 @@ class TestGuest(unittest.TestCase):
         expected = 50
         result2 = self.guest.get_cash()
         self.assertEqual(expected, result2)
+
+    def test_can_get_fave_song(self):
+        result_guest = self.guest.is_fave_song(self.song)
+        expected_guest = "Ya, dancer!"
+        self.assertEqual(expected_guest ,result_guest)
         

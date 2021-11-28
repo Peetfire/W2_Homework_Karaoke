@@ -10,12 +10,12 @@ class TestRoom(unittest.TestCase):
         self.song2 = Song("Me & Bobby McGee", "Janis Joplin", 4.31)
         self.song3 = Song("Just Dropped In", "Kenny Rogers", 3.20)
         self.playlist = [self.song1, self.song2, self.song3]
-        self.guest1 = Guest("Peter Kay", 50)
-        self.guest2 = Guest("Tom Jones", 60)
-        self.guest3 = Guest("Helena Bonham-Carter", 1000)
-        self.guest4 = Guest("Sean Locke", 100)
-        self.guest5 = Guest("John Bonham", 200)
-        self.guest6 = Guest("Frank Zappa", 40)
+        self.guest1 = Guest("Peter Kay", 50, "")
+        self.guest2 = Guest("Tom Jones", 60, "")
+        self.guest3 = Guest("Helena Bonham-Carter", 1000, "9 to 5")
+        self.guest4 = Guest("Sean Locke", 100, "Me & Bobby McGee")
+        self.guest5 = Guest("John Bonham", 200, "")
+        self.guest6 = Guest("Frank Zappa", 40, "Just Dropped In")
         self.group = [self.guest1, self.guest2, self.guest3]
         self.big_group = self.group + [self.guest4, self.guest5]
         self.group_cant_all_pay = [self.guest1, self.guest2, self.guest6]
@@ -54,7 +54,7 @@ class TestRoom(unittest.TestCase):
         result = len(self.room.get_guests())
         self.assertEqual(expected, result)
 
-    @unittest.skip("")
+    # @unittest.skip("")
     def test_can_add_guests_to_room(self):
         self.room.add_group(self.group)
         expected = 3
@@ -171,6 +171,12 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(expected1, result1)
         self.assertEqual(expected2, result2)
         self.assertEqual(expected3, result3)
+
+    def test_room_can_play_song(self):
+        result = self.room.play_song(self.song3, self.guest6)
+        expected = "Now playing: Just Dropped In by Kenny Rogers for Frank"
+        self.assertEqual(expected ,result)
+
 
 
 

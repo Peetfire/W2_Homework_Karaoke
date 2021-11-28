@@ -67,3 +67,8 @@ class Room:
                 guest.reduce_cash(self.get_price())
                 self.increase_takings(self.get_price())
                 self.add_guest(guest)
+
+    def play_song(self,song, guest):
+        print(f"Now playing: {song.song_name} by {song.artist} for {guest.name.split()[0]}")
+
+        return f"Now playing: {song.song_name} by {song.artist} for {guest.name.split()[0]}"
